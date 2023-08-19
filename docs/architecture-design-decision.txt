@@ -1,0 +1,17 @@
+Architecture Decisions
+
+*** 3 message passing techniques were used:
+- REST APIs  - most used technique. Industry standard
+- gRPC  - mission specific mearnt for 
+- Message Queues(Kafka)
+
+> Persons and Connections services:
+The frontend client uses REST APIs to easily integrate with HTTP routes of Persons and Connections services. REST was chosen because it is the industry standard, 
+offers an easy endpoint format and it gives high throughput in API performance.
+
+> Locations ingester service
+gRPC was chosen for ingesting large volume of location data from users' mobile devices. 
+The reason for the choice was to leverage on the improved performance provided by gRPC 
+
+> Locations saver service
+The location saver service utilizes a message queue (Kafka) to handle the ingested location data. This helps in achieving improved reliability, improved performance and also enable decoupling of our services. 
